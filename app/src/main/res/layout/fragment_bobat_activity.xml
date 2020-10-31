@@ -15,5 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="#F3E998"
-        android:text="Fyaaz.Bobat" />
+        android:text="Fyaaz.Bobat"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 </RelativeLayout>

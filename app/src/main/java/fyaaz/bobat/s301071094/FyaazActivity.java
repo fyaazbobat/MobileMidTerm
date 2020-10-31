@@ -11,36 +11,40 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class FyaazActivity extends Activity {
+import static androidx.constraintlayout.motion.widget.TransitionBuilder.validate;
+
+public class FyaazActivity extends AppCompatActivity {
     Button submit;
-    EditText username;
-    EditText password;
+    EditText Fyaazusername;
+    EditText FyaazPassword;
+    public int count = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        username = (EditText)findViewById(R.id.fyaTextPass);
-        password = (EditText)findViewById(R.id.fyaNum);
+        Fyaazusername = (EditText)findViewById(R.id.fyaTextPass);
+        FyaazPassword = (EditText)findViewById(R.id.fyaNum);
         submit = (Button) findViewById(R.id.fyabutton);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login();
+                Login(Fyaazusername.getText().toString(),FyaazPassword.getText().toString());
             }
         });
 
     }
 
-    public void Login()
-    {
-        if(username.getText().toString().equals("fyaaz.bobat") && password.getText().toString().equals("301071094")){
-            Intent intent = new Intent(this,BobatActivity.class);
+    public void Login(String username, String password) {
+        if (username.equals("fyaaz.bobat") && (password.equals("301071094"))) {
+            Intent intent = new Intent(this, BobatActivity.class);
             startActivity(intent);
-        //correcct password
-    }else{
-        //wrong password
-    }
-    }
-}
+            //correcct password
+        } else {
+            count--;
+            if (count == 0) {
+                submit.setEnabled(false);
+            }
+        }
+    }}
